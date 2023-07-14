@@ -17,6 +17,7 @@ export async function patch(req: Request, res: Response) {
     },
     data: {
       original,
+      views: 0, // TODO: is the ability to reset the view count independent of updating the original or are they tied together?
     },
     select: {
       slug: true,
