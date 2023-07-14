@@ -1,7 +1,8 @@
-import express, { Request, Response, NextFunction } from "express";
-import { z } from "zod";
+import express from "express";
 
 import { v1 } from "$/v1";
+import { errorHandler } from "$/utils/errorHandler";
+import { notFoundHandler } from "./utils/notFoundHandler";
 
 const app = express();
 app.use(express.json());
@@ -16,20 +17,8 @@ app.get("/:id", (req, res) => {
   res.send(`GET to /:id (${req.params.id})`);
 });
 
-// TODO: move to util function (?)
-app.use((req, res) => {
-  res.status(404).send("Not found");
-});
-
-// TODO: move to util function
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof z.ZodError) {
-    console.log(err.issues);
-    res.status(400).json(err.issues);
-  } else {
-    res.status(500).send("Internal server error");
-  }
-});
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
