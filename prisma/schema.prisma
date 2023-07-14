@@ -10,9 +10,9 @@ datasource db {
 model Link {
   id String @id @default(cuid())
 
-  slug     String @unique @default(cuid())
-  original String
-  views    Int    @default(0) // should views be a different table or a field?
+  slug      String @unique @default(cuid())
+  original  String
+  redirects Int    @default(0) // TODO: should redirect count be a different table or a field?
 
   cursor    Int      @unique @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")

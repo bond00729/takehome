@@ -9,7 +9,7 @@ const params = z
   })
   .strict();
 
-export async function view(req: Request, res: Response) {
+export async function redirect(req: Request, res: Response) {
   const { slug } = await params.parseAsync(req.params);
 
   const link = await prisma.link.findUniqueOrThrow({
@@ -20,6 +20,6 @@ export async function view(req: Request, res: Response) {
 
   await prisma.link.update({
     where: { slug },
-    data: { views: { increment: 1 } }, // TODO: are views unique to users or to links?
+    data: { redirects: { increment: 1 } }, // TODO: are redirects unique to users or to links?
   });
 }

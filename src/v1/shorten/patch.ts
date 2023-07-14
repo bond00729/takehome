@@ -19,12 +19,12 @@ export async function patch(req: Request, res: Response) {
     },
     data: {
       original: url,
-      views: 0, // TODO: is the ability to reset the view count independent of updating the original or are they tied together?
+      redirects: 0, // TODO: is the ability to reset the view count independent of updating the original or are they tied together?
     },
     select: {
       slug: true,
       original: true,
-      views: true,
+      redirects: true,
       createdAt: true,
       updatedAt: true,
     },
