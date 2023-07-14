@@ -1,21 +1,15 @@
 import express from "express";
 
-import { v1 } from "$/v1";
+import { v1, v1View } from "$/v1";
 import { errorHandler } from "$/utils/errorHandler";
-import { notFoundHandler } from "./utils/notFoundHandler";
+import { notFoundHandler } from "$/utils/notFoundHandler";
+import { asyncHandler } from "$/utils/asyncHandler";
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/v1", v1);
-
-// TODO: move to handler function
-app.get("/:id", (req, res) => {
-  // fetch shortenedLink from db
-  // if !shortenedLink; return 404
-  // else return redirect (temp or perm?)
-  res.send(`GET to /:id (${req.params.id})`);
-});
+app.get("/:slug", asyncHandler(v1View));
 
 app.use(notFoundHandler);
 app.use(errorHandler);
