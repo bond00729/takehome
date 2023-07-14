@@ -1,28 +1,37 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
+import { z } from "zod";
+
+import { v1 } from "$/v1";
 
 const app = express();
-const port = process.env.PORT || 8080;
+app.use(express.json());
 
-// TODO: add base api route (/api/v1/...) to api routes
+app.use("/api/v1", v1);
 
-// TODO: move these to separate routers
-app.post("/shorten", (req: Request, res: Response) => {
-  res.send("POST to /shorten");
-});
-app.patch("/shorten", (req: Request, res: Response) => {
-  res.send("PATCH to /shorten");
-});
-
-app.get("/stats", (req: Request, res: Response) => {
-  res.send("GET to /stats");
-});
-
-app.get("/:id", (req: Request, res: Response) => {
+// TODO: move to handler function
+app.get("/:id", (req, res) => {
+  // fetch shortenedLink from db
+  // if !shortenedLink; return 404
+  // else return redirect (temp or perm?)
   res.send(`GET to /:id (${req.params.id})`);
 });
 
-// TODO: handle 404s
+// TODO: move to util function (?)
+app.use((req, res) => {
+  res.status(404).send("Not found");
+});
 
+// TODO: move to util function
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof z.ZodError) {
+    console.log(err.issues);
+    res.status(400).json(err.issues);
+  } else {
+    res.status(500).send("Internal server error");
+  }
+});
+
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`🚀 [server]: Server is running at http://localhost:${port}`);
 });
