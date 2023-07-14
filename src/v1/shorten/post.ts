@@ -3,9 +3,11 @@ import { z } from "zod";
 
 import { prisma } from "$/lib/prisma";
 
-const schema = z.object({
-  url: z.string().url(),
-});
+const schema = z
+  .object({
+    url: z.string().url(),
+  })
+  .strict();
 
 export async function post(req: Request, res: Response) {
   const { url } = await schema.parseAsync(req.body);

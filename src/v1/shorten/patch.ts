@@ -3,20 +3,22 @@ import { z } from "zod";
 
 import { prisma } from "$/lib/prisma";
 
-const schema = z.object({
-  slug: z.string().cuid(),
-  url: z.string().url(),
-});
+const schema = z
+  .object({
+    slug: z.string().cuid(),
+    url: z.string().url(),
+  })
+  .strict();
 
 export async function patch(req: Request, res: Response) {
-  const { slug, url: original } = await schema.parseAsync(req.body);
+  const { slug, url } = await schema.parseAsync(req.body);
 
   const link = await prisma.link.update({
     where: {
       slug,
     },
     data: {
-      original,
+      original: url,
       views: 0, // TODO: is the ability to reset the view count independent of updating the original or are they tied together?
     },
     select: {

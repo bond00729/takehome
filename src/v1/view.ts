@@ -3,9 +3,11 @@ import { z } from "zod";
 
 import { prisma } from "$/lib/prisma";
 
-const params = z.object({
-  slug: z.string().cuid(),
-});
+const params = z
+  .object({
+    slug: z.string().cuid(),
+  })
+  .strict();
 
 export async function view(req: Request, res: Response) {
   const { slug } = await params.parseAsync(req.params);
