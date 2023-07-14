@@ -5,8 +5,8 @@ import { prisma } from "../../lib/prisma";
 
 const params = z
   .object({
-    limit: z.number().min(1).max(100).default(10).optional(),
-    cursor: z.number().positive().optional(),
+    limit: z.coerce.number().min(1).max(100).default(10).optional(),
+    cursor: z.coerce.number().positive().optional(),
   })
   .strict();
 
