@@ -4,23 +4,25 @@ import { z } from "zod";
 import { prisma } from "$/lib/prisma";
 
 const params = z.object({
-  limit: z.number().optional().default(10),
-  cursor: z.number().optional(),
+  limit: z.number().min(1).max(100).default(10).optional(),
+  cursor: z.number().positive().optional(),
 });
 
 export async function get(req: Request, res: Response) {
-  const { limit, cursor } = await params.parseAsync(req.body);
+  const { limit, cursor } = await params.parseAsync(req.query);
 
-  const link = await prisma.link.findMany({
+  const links = await prisma.link.findMany({
     take: limit,
-    skip: 1, // skip the cursor
-    cursor: {
-      cursor,
-    },
+    ...(cursor && { skip: 1 }), // skip the cursor
+    ...(cursor && {
+      cursor: {
+        cursor,
+      },
+    }),
     orderBy: {
       cursor: "asc",
     },
   });
 
-  res.json(link);
+  res.json(links);
 }
