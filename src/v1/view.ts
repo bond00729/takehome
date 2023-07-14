@@ -20,6 +20,6 @@ export async function view(req: Request, res: Response) {
 
   await prisma.link.update({
     where: { slug },
-    data: { views: { increment: 1 } },
+    data: { views: { increment: 1 } }, // TODO: are views unique to users or to links?
   });
 }
