@@ -1,6 +1,6 @@
 import express from "express";
 
-import { asyncHandler } from "$/utils/asyncHandler";
+import { asyncHandler } from "../../utils/asyncHandler";
 
 import { post } from "./post";
 import { patch } from "./patch";

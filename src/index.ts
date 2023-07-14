@@ -1,9 +1,9 @@
 import express from "express";
 
-import { v1, v1Redirect } from "$/v1";
-import { errorHandler } from "$/utils/errorHandler";
-import { notFoundHandler } from "$/utils/notFoundHandler";
-import { asyncHandler } from "$/utils/asyncHandler";
+import { v1, v1Redirect } from "./v1";
+import { errorHandler } from "./utils/errorHandler";
+import { notFoundHandler } from "./utils/notFoundHandler";
+import { asyncHandler } from "./utils/asyncHandler";
 
 const app = express();
 app.use(express.json());
