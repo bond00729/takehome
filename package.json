@@ -7,7 +7,7 @@
   "main": "src/index.ts",
   "scripts": {
     "db:push": "prisma db push",
-    "dev": "docker-compose up -d && nodemon ./src/index.ts",
+    "dev": "docker-compose up -d && nodemon -r tsconfig-paths/register ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"Error: no build specified\" && exit 1",
     "start": "echo \"Error: no start specified\" && exit 1"
@@ -22,6 +22,7 @@
     "nodemon": "3.0.1",
     "prisma": "5.0.0",
     "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0",
     "typescript": "5.1.6"
   },
   "volta": {
