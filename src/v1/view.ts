@@ -14,5 +14,10 @@ export async function view(req: Request, res: Response) {
     where: { slug },
   });
 
-  res.json(link);
+  res.redirect(link.original);
+
+  await prisma.link.update({
+    where: { slug },
+    data: { views: { increment: 1 } },
+  });
 }
