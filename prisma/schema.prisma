@@ -10,9 +10,9 @@ datasource db {
 model Link {
   id String @id @default(cuid())
 
-  shortLink    String @map("short_link")
-  originalLink String @map("original_link")
-  views        Int // should views be a different table or a field?
+  slug     String @unique @default(cuid())
+  original String
+  views    Int    @default(0) // should views be a different table or a field?
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
