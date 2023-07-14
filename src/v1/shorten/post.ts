@@ -8,11 +8,11 @@ const schema = z.object({
 });
 
 export async function post(req: Request, res: Response) {
-  const { url: original } = await schema.parseAsync(req.body);
+  const { url } = await schema.parseAsync(req.body);
 
   const { slug } = await prisma.link.create({
     data: {
-      original,
+      original: url,
     },
     select: {
       slug: true,
