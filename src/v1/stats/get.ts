@@ -69,6 +69,26 @@ const params = z
  *                     type: date-time
  *                     description: last time the link was updated
  *                     example: 2023-07-15T00:28:29.885Z
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   code:
+ *                     type: string
+ *                     example: too_big
+ *                   message:
+ *                     type: string
+ *                     example: Number must be less than or equal to 100
+ *                   path:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                       example: limit
  */
 export async function get(req: Request, res: Response) {
   const { limit, cursor } = await params.parseAsync(req.query);

@@ -39,6 +39,26 @@ const schema = z
  *             schema:
  *               type: string
  *               example: http://localhost:8080/clk39pduw0002yyinboss60b2
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   code:
+ *                     type: string
+ *                     example: invalid_string
+ *                   message:
+ *                     type: string
+ *                     example: Invalid url
+ *                   path:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                       example: url
  */
 export async function post(req: Request, res: Response) {
   const { url } = await schema.parseAsync(req.body);

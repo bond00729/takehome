@@ -65,6 +65,28 @@ const schema = z
  *                   type: date-time
  *                   description: last time the link was updated
  *                   example: 2023-07-15T00:59:42.885Z
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   code:
+ *                     type: string
+ *                     example: invalid_string
+ *                   message:
+ *                     type: string
+ *                     example: Invalid url
+ *                   path:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                       example: url
+ *       404:
+ *         description: Not found
  */
 export async function patch(req: Request, res: Response) {
   const { slug, url } = await schema.parseAsync(req.body);
