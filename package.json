@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
-    "format": "prettier --write ./src/**/*.ts",
+    "format": "prettier --write './src/**/*.ts'",
     "lint": "eslint --max-warnings 0 ./src",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
