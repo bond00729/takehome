@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import { z } from "zod";
+import { Request, Response } from 'express';
+import { z } from 'zod';
 
-import { prisma } from "../../lib/prisma";
+import { prisma } from '../../lib/prisma';
 
 const params = z
   .object({
@@ -22,7 +22,7 @@ export async function get(req: Request, res: Response) {
       },
     }),
     orderBy: {
-      cursor: "asc",
+      cursor: 'asc',
     },
   });
 

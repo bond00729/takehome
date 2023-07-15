@@ -1,10 +1,10 @@
-import express from "express";
+import express from 'express';
 
-import { asyncHandler } from "../../utils/asyncHandler";
+import { asyncHandler } from '../../utils/asyncHandler';
 
-import { get } from "./get";
+import { get } from './get';
 
 const stats = express.Router();
-stats.route("/").get(asyncHandler(get));
+stats.route('/').get(asyncHandler(get));
 
 export { stats };
