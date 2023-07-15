@@ -54,5 +54,6 @@ export async function post(req: Request, res: Response) {
   });
 
   // TODO: should protocol + host be an env var?
+  // TODO: should this just return the link record?
   res.json(`http://localhost:${process.env.PORT || 8080}/${slug}`);
 }
