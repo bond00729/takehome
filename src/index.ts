@@ -1,12 +1,12 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
-import pino from 'pino-http';
 
 import { v1, v1Redirect } from './v1';
 import { errorHandler } from './utils/errorHandler';
 import { notFoundHandler } from './utils/notFoundHandler';
 import { asyncHandler } from './utils/asyncHandler';
+import { httpLogger, logger } from './utils/logger';
 
 const swaggerSpec = swaggerJsDoc({
   failOnErrors: true,
@@ -34,18 +34,10 @@ const swaggerSpec = swaggerJsDoc({
 
 const app = express();
 app.use(express.json());
-app.use(
-  process.env.NODE_ENV === 'production'
-    ? pino()
-    : pino({
-        transport: {
-          target: 'pino-pretty',
-        },
-      })
-);
+app.use(httpLogger);
 
 app.use('/api/v1', v1);
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // TODO: move this to v1 router
 app.get('/:slug', asyncHandler(v1Redirect));
 
 app.use(notFoundHandler);
@@ -53,6 +45,5 @@ app.use(errorHandler);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  // TODO: should i use winston or log-level instead of console log?
-  console.log(`🚀 [server]: Server is running at http://localhost:${port}`);
+  logger.info(`🚀 [server]: Server is running at http://localhost:${port}`);
 });
