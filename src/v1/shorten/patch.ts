@@ -10,6 +10,62 @@ const schema = z
   })
   .strict();
 
+/**
+ * @swagger
+ * /api/v1/shorten:
+ *   patch:
+ *     summary: Update a link.
+ *     description: Update a link.
+ *     requestBody:
+ *       description: Update link schema
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - slug
+ *               - url
+ *             properties:
+ *               slug:
+ *                 type: string
+ *                 example: clk39pduw0003yyinw2k582oh
+ *               url:
+ *                 type: string
+ *                 example: https://redhotchilipeppers.com
+ *     responses:
+ *       200:
+ *         description: The updated link.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 slug:
+ *                   type: string
+ *                   description: link's slug.
+ *                   example: clk39pduw0003yyinw2k582oh
+ *                 original:
+ *                   type: string
+ *                   description: link's original url.
+ *                   example: https://www.53thieves.com/
+ *                 redirects:
+ *                   type: integer
+ *                   description: number of times the shortened link has redirected.
+ *                   example: 16
+ *                 cursor:
+ *                   type: integer
+ *                   description: cursor used for pagination
+ *                   example: 3
+ *                 createdAt:
+ *                   type: date-time
+ *                   description: time the link was created
+ *                   example: 2023-07-15T00:39:14.033Z
+ *                 updatedAt:
+ *                   type: date-time
+ *                   description: last time the link was updated
+ *                   example: 2023-07-15T00:59:42.885Z
+ */
 export async function patch(req: Request, res: Response) {
   const { slug, url } = await schema.parseAsync(req.body);
 
