@@ -7,7 +7,7 @@
   "main": "src/index.ts",
   "scripts": {
     "format": "prettier --write ./src/**/*.ts",
-    "lint": "eslint --max-warnings 0 ./src/**/*.ts",
+    "lint": "eslint --max-warnings 0 ./src",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "dev": "docker-compose up -d && nodemon ./src/index.ts",
