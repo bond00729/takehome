@@ -1,6 +1,7 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
+import pino from 'pino-http';
 
 import { v1, v1Redirect } from './v1';
 import { errorHandler } from './utils/errorHandler';
@@ -33,6 +34,15 @@ const swaggerSpec = swaggerJsDoc({
 
 const app = express();
 app.use(express.json());
+app.use(
+  process.env.NODE_ENV === 'production'
+    ? pino()
+    : pino({
+        transport: {
+          target: 'pino-pretty',
+        },
+      })
+);
 
 app.use('/api/v1', v1);
 app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
