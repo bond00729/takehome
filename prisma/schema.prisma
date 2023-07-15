@@ -10,7 +10,7 @@ datasource db {
 model Link {
   id String @id @default(cuid())
 
-  slug      String @unique @default(cuid())
+  slug      String @unique
   original  String
   redirects Int    @default(0) // TODO: should redirect count be a different table or a field?
 

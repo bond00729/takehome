@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
+import { init } from '@paralleldrive/cuid2';
 
 import { prisma } from '../../lib/prisma';
+
+const createId = init({ length: 9 });
 
 const schema = z
   .object({
@@ -42,6 +45,7 @@ export async function post(req: Request, res: Response) {
 
   const { slug } = await prisma.link.create({
     data: {
+      slug: createId(),
       original: url,
     },
     select: {

@@ -29,7 +29,7 @@ const schema = z
  *             properties:
  *               slug:
  *                 type: string
- *                 example: clk39pduw0003yyinw2k582oh
+ *                 example: bxazg6osq
  *               url:
  *                 type: string
  *                 example: https://redhotchilipeppers.com
@@ -44,7 +44,7 @@ const schema = z
  *                 slug:
  *                   type: string
  *                   description: link's slug.
- *                   example: clk39pduw0003yyinw2k582oh
+ *                   example: bxazg6osq
  *                 original:
  *                   type: string
  *                   description: link's original url.

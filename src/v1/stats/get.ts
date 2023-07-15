@@ -48,7 +48,7 @@ const params = z
  *                   slug:
  *                     type: string
  *                     description: link's slug.
- *                     example: clk39pduw0003yyinw2k582oh
+ *                     example: pxee0kr3n
  *                   original:
  *                     type: string
  *                     description: link's original url.
