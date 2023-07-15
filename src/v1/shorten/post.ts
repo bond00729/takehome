@@ -21,5 +21,6 @@ export async function post(req: Request, res: Response) {
     },
   });
 
-  res.json(slug);
+  // TODO: should protocol + host be an env var?
+  res.json(`http://localhost:${process.env.PORT || 8080}/${slug}`);
 }
