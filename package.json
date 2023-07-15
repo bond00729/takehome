@@ -6,6 +6,8 @@
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
+    "format": "prettier --write ./src/**/*.ts",
+    "lint": "eslint --max-warnings 0 ./src/**/*.ts",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "dev": "docker-compose up -d && nodemon ./src/index.ts",
@@ -24,7 +26,9 @@
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
     "eslint": "8.45.0",
+    "eslint-config-prettier": "8.8.0",
     "nodemon": "3.0.1",
+    "prettier": "3.0.0",
     "prisma": "5.0.0",
     "ts-node": "10.9.1",
     "typescript": "5.1.6"
