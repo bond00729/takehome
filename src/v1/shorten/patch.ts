@@ -5,7 +5,7 @@ import { prisma } from '../../lib/prisma';
 
 const schema = z
   .object({
-    slug: z.string().cuid(),
+    slug: z.string(),
     url: z.string().url(),
   })
   .strict();
