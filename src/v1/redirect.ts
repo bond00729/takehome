@@ -9,6 +9,25 @@ const params = z
   })
   .strict();
 
+/**
+ * @swagger
+ * /{slug}:
+ *   get:
+ *     summary: Use a shortened url.
+ *     description: Use a shortened url.
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The slug for the original url.
+ *     responses:
+ *       302:
+ *         description: Slug found, redirect to original
+ *       404:
+ *         description: Slug not found
+ */
 export async function redirect(req: Request, res: Response) {
   const { slug } = await params.parseAsync(req.params);
 
