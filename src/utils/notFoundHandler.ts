@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 
-export function notFoundHandler(req: Request, res: Response) {
+export function notFoundHandler(_req: Request, res: Response) {
   res.status(404).send("Not found");
 }
