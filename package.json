@@ -10,10 +10,10 @@
     "lint": "eslint --max-warnings 0 ./src",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
-    "dev": "docker-compose up -d && nodemon ./src/index.ts",
+    "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && nodemon ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "docker-compose up -d && sleep 1 && pnpm db:push"
+    "start": "docker-compose --profile app up -d && sleep 1 && pnpm db:push"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "2.2.1",

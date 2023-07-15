@@ -1,8 +1,9 @@
-version: "3.8"
+version: '3.8'
 services:
   postgres:
     image: postgres:15
     container_name: takehome-postgres
+    profiles: ['dev', 'app']
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: application
@@ -12,6 +13,7 @@ services:
   api:
     build: .
     container_name: takehome-api
+    profiles: ['app']
     environment:
       DATABASE_URL: postgresql://application:password@postgres:5432/postgres?schema=public
     ports:
