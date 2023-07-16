@@ -25,4 +25,5 @@ COPY --from=build /app/dist ./dist
 
 ENV TS_NODE_BASEURL="./dist"
 EXPOSE 8080
+USER node
 CMD ["node", "-r", "tsconfig-paths/register", "./dist/index.js"]
