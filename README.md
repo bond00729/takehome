@@ -44,7 +44,7 @@ pnpm test
 ```
 
 **Load tests:**
-Load test are run via `artillery`
+Load test are run via `artillery` and requires `pnpm` to be installed on the host machine
 
 ```
 pnpm test:load
