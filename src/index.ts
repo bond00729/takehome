@@ -28,7 +28,7 @@ const swaggerSpec = swaggerJsDoc({
       },
     ],
   },
-  apis: ['./src/v1/**/*.ts'],
+  apis: ['./src/v1/**/*.{ts,yaml}'],
 });
 
 const app = express();
