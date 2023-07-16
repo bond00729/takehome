@@ -4,6 +4,7 @@ specifiers:
   '@paralleldrive/cuid2': 2.2.1
   '@prisma/client': 5.0.0
   '@types/chai': 4.3.5
+  '@types/chai-arrays': 2.0.0
   '@types/express': 4.17.17
   '@types/mocha': 10.0.1
   '@types/node': 20.4.2
@@ -12,6 +13,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 6.0.0
   '@typescript-eslint/parser': 6.0.0
   chai: 4.3.7
+  chai-arrays: 2.2.0
   chai-http: 4.4.0
   eslint: 8.45.0
   eslint-config-prettier: 8.8.0
@@ -44,6 +46,7 @@ dependencies:
 
 devDependencies:
   '@types/chai': 4.3.5
+  '@types/chai-arrays': 2.0.0
   '@types/express': 4.17.17
   '@types/mocha': 10.0.1
   '@types/node': 20.4.2
@@ -52,6 +55,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 6.0.0_67z5obcwh3vgkftcfgt7udy35y
   '@typescript-eslint/parser': 6.0.0_ko3fmmbeyij36muomfgt2u76xu
   chai: 4.3.7
+  chai-arrays: 2.2.0
   chai-http: 4.4.0
   eslint: 8.45.0
   eslint-config-prettier: 8.8.0_eslint@8.45.0
@@ -261,6 +265,12 @@ packages:
     dependencies:
       '@types/connect': 3.4.35
       '@types/node': 20.4.2
+    dev: true
+
+  /@types/chai-arrays/2.0.0:
+    resolution: {integrity: sha512-5h5jnAC9C64YnD7WJpA5gBG7CppF/QmoWytOssJ6ysENllW49NBdpsTx6uuIBOpnzAnXThb8jBICgB62wezTLQ==}
+    dependencies:
+      '@types/chai': 4.3.5
     dev: true
 
   /@types/chai/4.3.5:
@@ -683,6 +693,11 @@ packages:
   /camelcase/6.3.0:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chai-arrays/2.2.0:
+    resolution: {integrity: sha512-4awrdGI2EH8owJ9I58PXwG4N56/FiM8bsn4CVSNEgr4GKAM6Kq5JPVApUbhUBjDakbZNuRvV7quRSC38PWq/tg==}
+    engines: {node: '>=0.10'}
     dev: true
 
   /chai-http/4.4.0:

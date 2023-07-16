@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/chai": "4.3.5",
+    "@types/chai-arrays": "2.0.0",
     "@types/express": "4.17.17",
     "@types/mocha": "10.0.1",
     "@types/node": "20.4.2",
@@ -36,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
     "chai": "4.3.7",
+    "chai-arrays": "2.2.0",
     "chai-http": "4.4.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
