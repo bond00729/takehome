@@ -39,6 +39,6 @@ export async function redirect(req: Request, res: Response) {
 
   await prisma.link.update({
     where: { slug },
-    data: { redirects: { increment: 1 } }, // TODO: are redirects unique to users or to links?
+    data: { redirects: { increment: 1 } },
   });
 }

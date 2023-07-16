@@ -13,7 +13,7 @@ model Link {
   slug      String @unique
   original  String
   shortened String
-  redirects Int    @default(0) // TODO: should redirect count be a different table or a field?
+  redirects Int    @default(0)
 
   cursor    Int      @unique @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
