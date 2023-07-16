@@ -60,6 +60,7 @@ describe('[GET] /v1/stats', async function () {
 
     expect(status).to.be.equal(200);
     expect(body).to.be.array();
+    expect(body).to.be.ofSize(3);
 
     // make sure the items in the array have the correct keys
     expect(body[0].id).to.be.a('string');
