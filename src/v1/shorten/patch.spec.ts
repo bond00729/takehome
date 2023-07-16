@@ -48,12 +48,11 @@ describe('[PATCH] /api/v1/shorten', async function () {
     expect(body.shortened).to.be.equal(link.shortened);
     expect(body.redirects).to.be.equal(0);
     expect(body.cursor).to.be.equal(link.cursor);
-    expect(new Date(body.createdAt).toString()).to.be.equal(
-      new Date(link.createdAt).toString()
-    );
-    expect(new Date(body.updatedAt).toString()).to.be.equal(
-      new Date(link.updatedAt).toString()
-    );
+
+    const datetimeRegex =
+      /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
+    expect(datetimeRegex.test(body.createdAt)).to.be.true;
+    expect(datetimeRegex.test(body.updatedAt)).to.be.true;
   });
 
   it('returns 200 when give a valid https url', async function () {

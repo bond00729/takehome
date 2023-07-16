@@ -31,8 +31,11 @@ describe('[POST] /api/v1/shorten', async function () {
     expect(body.shortened).to.be.a('string');
     expect(body.redirects).to.be.a('number');
     expect(body.cursor).to.be.a('number');
-    expect(body.createdAt).to.be.a('string');
-    expect(body.updatedAt).to.be.a('string');
+
+    const datetimeRegex =
+      /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
+    expect(datetimeRegex.test(body.createdAt)).to.be.true;
+    expect(datetimeRegex.test(body.updatedAt)).to.be.true;
   });
 
   it('returns 200 when give a valid https url', async function () {

@@ -69,8 +69,11 @@ describe('[GET] /v1/stats', async function () {
     expect(body[0].shortened).to.be.equal(shortened1);
     expect(body[0].redirects).to.be.a('number');
     expect(body[0].cursor).to.be.a('number');
-    expect(body[0].createdAt).to.be.a('string');
-    expect(body[0].updatedAt).to.be.a('string');
+
+    const datetimeRegex =
+      /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)/;
+    expect(datetimeRegex.test(body[0].createdAt)).to.be.true;
+    expect(datetimeRegex.test(body[0].updatedAt)).to.be.true;
   });
 
   it('returns 200 with a limited result set', async function () {
