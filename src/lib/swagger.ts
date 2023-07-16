@@ -1,5 +1,7 @@
 import swaggerJsDoc from 'swagger-jsdoc';
 
+const BASE_URL = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
+
 export const swaggerSpec = swaggerJsDoc({
   failOnErrors: true,
   definition: {
@@ -20,5 +22,5 @@ export const swaggerSpec = swaggerJsDoc({
       },
     ],
   },
-  apis: ['./src/v1/**/*.{ts,yaml}'],
+  apis: [`./${BASE_URL}/v1/**/*.{js,ts,yaml}`],
 });
