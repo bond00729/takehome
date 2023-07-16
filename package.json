@@ -7,7 +7,7 @@
   "main": "src/index.ts",
   "scripts": {
     "format": "prettier --write './src/**/*.ts'",
-    "lint": "eslint --max-warnings 0 ./src",
+    "lint": "eslint --max-warnings 0 ./src/**/*.ts",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
