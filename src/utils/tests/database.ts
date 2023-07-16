@@ -1,5 +1,6 @@
-import { prisma } from '$/lib/prisma';
 import { createId } from '@paralleldrive/cuid2';
+
+import { prisma } from '$/lib/prisma';
 
 export async function truncate() {
   await prisma.$transaction([prisma.link.deleteMany()]);
