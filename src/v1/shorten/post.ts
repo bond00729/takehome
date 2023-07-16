@@ -37,8 +37,8 @@ const schema = z
  *         content:
  *           application/json:
  *             schema:
- *               type: string
- *               example: http://localhost:8080/clk39pduw0002yyinboss60b2
+ *               type: object
+ *               $ref: '#/components/schemas/Link'
  *       400:
  *         description: Bad request
  *         content:
@@ -47,18 +47,7 @@ const schema = z
  *               type: array
  *               items:
  *                 type: object
- *                 properties:
- *                   code:
- *                     type: string
- *                     example: invalid_string
- *                   message:
- *                     type: string
- *                     example: Invalid url
- *                   path:
- *                     type: array
- *                     items:
- *                       type: string
- *                       example: url
+ *                 $ref: '#/components/schemas/BadRequest'
  */
 export async function post(req: Request, res: Response) {
   const { url } = await schema.parseAsync(req.body);
@@ -68,15 +57,9 @@ export async function post(req: Request, res: Response) {
     data: {
       slug,
       original: url,
-      new: `${process.env.SERVER_URL}/${slug}`,
-    },
-    select: {
-      slug: true,
-      original: true,
-      new: true,
+      shortened: `${process.env.SERVER_URL}/${slug}`,
     },
   });
 
-  // TODO: update swagger response type... just return the whole thing and use a component?
   res.json(link);
 }

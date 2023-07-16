@@ -40,31 +40,7 @@ const schema = z
  *           application/json:
  *             schema:
  *               type: object
- *               properties:
- *                 slug:
- *                   type: string
- *                   description: link's slug.
- *                   example: bxazg6osq
- *                 original:
- *                   type: string
- *                   description: link's original url.
- *                   example: https://www.53thieves.com/
- *                 redirects:
- *                   type: integer
- *                   description: number of times the shortened link has redirected.
- *                   example: 16
- *                 cursor:
- *                   type: integer
- *                   description: cursor used for pagination
- *                   example: 3
- *                 createdAt:
- *                   type: date-time
- *                   description: time the link was created
- *                   example: 2023-07-15T00:39:14.033Z
- *                 updatedAt:
- *                   type: date-time
- *                   description: last time the link was updated
- *                   example: 2023-07-15T00:59:42.885Z
+ *               $ref: '#/components/schemas/Link'
  *       400:
  *         description: Bad request
  *         content:
@@ -73,18 +49,7 @@ const schema = z
  *               type: array
  *               items:
  *                 type: object
- *                 properties:
- *                   code:
- *                     type: string
- *                     example: invalid_string
- *                   message:
- *                     type: string
- *                     example: Invalid url
- *                   path:
- *                     type: array
- *                     items:
- *                       type: string
- *                       example: url
+ *                 $ref: '#/components/schemas/BadRequest'
  *       404:
  *         description: Not found
  */
@@ -97,14 +62,7 @@ export async function patch(req: Request, res: Response) {
     },
     data: {
       original: url,
-      redirects: 0, // TODO: is the ability to reset the view count independent of updating the original or are they tied together?
-    },
-    select: {
-      slug: true,
-      original: true,
-      redirects: true,
-      createdAt: true,
-      updatedAt: true,
+      redirects: 0,
     },
   });
 

@@ -40,35 +40,7 @@ const params = z
  *               type: array
  *               items:
  *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                     description: link ID.
- *                     example: clk39pduw0002yyinboss60b2
- *                   slug:
- *                     type: string
- *                     description: link's slug.
- *                     example: pxee0kr3n
- *                   original:
- *                     type: string
- *                     description: link's original url.
- *                     example: https://redhotchilipeppers.com/
- *                   redirects:
- *                     type: integer
- *                     description: number of times the shortened link has redirected.
- *                     example: 7
- *                   cursor:
- *                     type: integer
- *                     description: cursor used for pagination
- *                     example: 11
- *                   createdAt:
- *                     type: date-time
- *                     description: time the link was created
- *                     example: 2023-07-15T00:28:24.033Z
- *                   updatedAt:
- *                     type: date-time
- *                     description: last time the link was updated
- *                     example: 2023-07-15T00:28:29.885Z
+ *                 $ref: '#/components/schemas/Link'
  *       400:
  *         description: Bad request
  *         content:
@@ -77,18 +49,7 @@ const params = z
  *               type: array
  *               items:
  *                 type: object
- *                 properties:
- *                   code:
- *                     type: string
- *                     example: too_big
- *                   message:
- *                     type: string
- *                     example: Number must be less than or equal to 100
- *                   path:
- *                     type: array
- *                     items:
- *                       type: string
- *                       example: limit
+ *                 $ref: '#/components/schemas/BadRequest'
  */
 export async function get(req: Request, res: Response) {
   const { limit, cursor } = await params.parseAsync(req.query);
