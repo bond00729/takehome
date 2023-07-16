@@ -24,7 +24,7 @@ specifiers:
   nodemon: 3.0.1
   pino: 8.14.1
   pino-http: 8.3.3
-  pino-pretty: ^10.0.1
+  pino-pretty: 10.0.1
   prettier: 3.0.0
   prisma: 5.0.0
   swagger-jsdoc: 6.2.8
