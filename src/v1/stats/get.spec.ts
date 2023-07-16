@@ -15,7 +15,7 @@ describe('[GET] /v1/stats', async function () {
     slug3 = createId();
 
   const original1 = 'https://redhotchilipeppers.com/',
-    original2 = 'https://53theives.com/',
+    original2 = 'https://53thieves.com/',
     original3 = 'https://www.lordhuron.com/#/';
 
   const shortened1 = `http://localhost:9090/${slug1}`,
