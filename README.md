@@ -34,20 +34,28 @@ this will start the dev server in watch mode so changes to the source code are a
 
 ## Tests
 
-There are two kinds of tests in this repo, integration tests and load tests. They can be run as followed:
+_Note: must complete step one of dev setup before running the tests_
 
 **Integration tests:**
-Integration tests for each api route are alongside the implementation (\*.spec.ts)
+Integration tests for each api route are alongside the implementation (`*.spec.ts`)
 
 ```
 pnpm test
 ```
 
 **Load tests:**
+Load test are run via `artillery`
 
 ```
 pnpm test:load
 ```
+
+There are currently two load test scenarios being run:
+
+- create and update
+- go to shortened link
+
+An html report of a load test is stored in `/artillery/reports`
 
 ## Running the API via docker-compose
 
