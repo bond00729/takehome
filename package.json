@@ -11,7 +11,7 @@
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
-    "test": "mocha -r ts-node/register './src/**/*.spec.ts'",
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register './src/**/*.spec.ts'",
     "build": "tsc",
     "start": "docker-compose --profile app up -d --build && sleep 1 && pnpm db:push"
   },
