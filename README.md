@@ -37,6 +37,7 @@ this will start the dev server in watch mode so changes to the source code are a
 There are two kinds of tests in this repo, integration tests and load tests. They can be run as followed:
 
 **Integration tests:**
+Integration tests for each api route are alongside the implementation (\*.spec.ts)
 
 ```
 pnpm test
