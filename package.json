@@ -10,7 +10,7 @@
     "lint": "eslint --max-warnings 0 ./src",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
-    "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && SERVER_URL=http://localhost:8080 nodemon ./src/index.ts",
+    "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "docker-compose --profile app up -d && sleep 1 && pnpm db:push"
@@ -40,6 +40,7 @@
     "prettier": "3.0.0",
     "prisma": "5.0.0",
     "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0",
     "typescript": "5.1.6"
   },
   "volta": {
