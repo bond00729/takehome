@@ -52,7 +52,7 @@ describe('[GET] /v1/stats', async function () {
     await prisma.$disconnect();
   });
 
-  it('returns data in the correct shape', async function () {
+  it('returns 200 with data in the correct shape', async function () {
     const { status, body } = await chai
       .request(app)
       .get('/api/v1/stats')
@@ -72,7 +72,7 @@ describe('[GET] /v1/stats', async function () {
     expect(body[0].updatedAt).to.be.a('string');
   });
 
-  it('returns a limited result set', async function () {
+  it('returns 200 with a limited result set', async function () {
     const limit = 2;
     const { status, body } = await chai
       .request(app)
@@ -84,7 +84,7 @@ describe('[GET] /v1/stats', async function () {
     expect(body).to.be.ofSize(limit);
   });
 
-  it('properly paginates using the cursor', async function () {
+  it('return 200 and properly paginates using the cursor', async function () {
     const limit = 1;
     const res = await chai
       .request(app)
@@ -123,7 +123,7 @@ describe('[GET] /v1/stats', async function () {
     expect(res4.body).to.be.ofSize(0); // only had 3 items to paginate through
   });
 
-  it('returns errors in the correct shape', async function () {
+  it('returns 400 BadRequest in the correct shape', async function () {
     const { status, body } = await chai
       .request(app)
       .get(`/api/v1/stats?limit=test`)
