@@ -1,7 +1,7 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 
-import { swaggerSpec } from '../lib/swagger';
+import { swaggerSpec } from '$/lib/swagger';
 import { shorten } from './shorten';
 import { stats } from './stats';
 import { redirect } from './redirect';

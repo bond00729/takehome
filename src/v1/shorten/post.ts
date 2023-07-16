@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { z } from 'zod';
 import { init } from '@paralleldrive/cuid2';
 
-import { prisma } from '../../lib/prisma';
+import { prisma } from '$/lib/prisma';
 
 const createId = init({ length: 9 });
 
