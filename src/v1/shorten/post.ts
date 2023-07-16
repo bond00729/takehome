@@ -8,7 +8,12 @@ const createId = init({ length: 9 });
 
 const schema = z
   .object({
-    url: z.string().url(),
+    url: z
+      .string()
+      .regex(
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/,
+        'Invalid url'
+      ),
   })
   .strict();
 
