@@ -1,0 +1,39 @@
+config:
+  target: http://localhost:8080
+  phases:
+    - name: Ramp up to peak
+      duration: 60
+      arrivalRate: 10
+      rampTo: 50
+    - name: Sustained peak
+      duration: 180
+      arrivalRate: 20
+      rampTo: 100
+scenarios:
+  # setup: must have at least 1 record in the "postgres" database's "link" table
+  - name: go to shortened url
+    flow:
+      - get:
+          url: '/api/v1/stats'
+          qs:
+            limit: 1
+          capture:
+            json: '$[0].shortened'
+            as: 'shortened'
+      - get:
+          url: '{{ shortened }}'
+          followRedirect: false
+  - name: create and update
+    flow:
+      - post:
+          url: '/api/v1/shorten'
+          json:
+            url: 'https://redhotchilipeppers.com/'
+          capture:
+            json: '$.slug'
+            as: 'slug'
+      - patch:
+          url: '/api/v1/shorten'
+          json:
+            slug: '{{ slug }}'
+            url: 'https://53thieves.com/'
