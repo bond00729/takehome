@@ -11,7 +11,11 @@ export function errorHandler(
   logger.error(`server error: ${JSON.stringify(err, null, 2)}`);
 
   if (err instanceof z.ZodError) {
-    res.status(400).json(err.issues);
+    res
+      .status(400)
+      .json(
+        err.issues.map(({ code, message, path }) => ({ code, message, path }))
+      );
   } else if (err.code === 'P2025') {
     res.status(404).send('Not found');
   } else {
