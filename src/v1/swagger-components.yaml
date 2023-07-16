@@ -17,7 +17,7 @@ components:
         shortened:
           type: string
           description: link's shortened url.
-          example: https://redhotchilipeppers.com/
+          example: http://localhost:8080/pxee0kr3n
         redirects:
           type: integer
           description: number of times the shortened link has redirected.
