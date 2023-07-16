@@ -8,8 +8,6 @@ import { notFoundHandler } from './utils/notFoundHandler';
 import { asyncHandler } from './utils/asyncHandler';
 import { httpLogger, logger } from './utils/logger';
 
-const port = process.env.PORT || 8080;
-
 const swaggerSpec = swaggerJsDoc({
   failOnErrors: true,
   definition: {
@@ -26,8 +24,7 @@ const swaggerSpec = swaggerJsDoc({
     },
     servers: [
       {
-        url: `http://localhost:${port}`,
-        description: 'Development server',
+        url: process.env.SERVER_URL,
       },
     ],
   },
@@ -45,6 +42,6 @@ app.get('/:slug', asyncHandler(v1Redirect));
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  logger.info(`🚀 [server]: Server is running at http://localhost:${port}`);
+app.listen(process.env.PORT || 8080, () => {
+  logger.info(`🚀 [server]: Server is running at ${process.env.SERVER_URL}`);
 });

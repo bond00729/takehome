@@ -12,6 +12,7 @@ model Link {
 
   slug      String @unique
   original  String
+  new       String
   redirects Int    @default(0) // TODO: should redirect count be a different table or a field?
 
   cursor    Int      @unique @default(autoincrement())

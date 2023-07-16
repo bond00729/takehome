@@ -63,17 +63,20 @@ const schema = z
 export async function post(req: Request, res: Response) {
   const { url } = await schema.parseAsync(req.body);
 
-  const { slug } = await prisma.link.create({
+  const slug = createId();
+  const link = await prisma.link.create({
     data: {
-      slug: createId(),
+      slug,
       original: url,
+      new: `${process.env.SERVER_URL}/${slug}`,
     },
     select: {
       slug: true,
+      original: true,
+      new: true,
     },
   });
 
-  // TODO: should protocol + host be an env var?
-  // TODO: should this just return the link record?
-  res.json(`http://localhost:${process.env.PORT || 8080}/${slug}`);
+  // TODO: update swagger response type... just return the whole thing and use a component?
+  res.json(link);
 }
