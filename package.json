@@ -11,7 +11,7 @@
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "dev": "docker-compose --profile dev up -d && sleep 1 && pnpm db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
-    "test": "docker-compose --profile dev up -d && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public pnpm db:push && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public PORT=9090 SERVER_URL=http://localhost:9090 mocha --timeout 60000 --exit -r ts-node/register -r tsconfig-paths/register './src/**/*.spec.ts'",
+    "test": "docker-compose --profile dev up -d && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public pnpm db:push && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public PORT=9090 SERVER_URL=http://localhost:9090 LOG_LEVEL=silent mocha --timeout 60000 --exit -r ts-node/register -r tsconfig-paths/register './src/**/*.spec.ts'",
     "build": "tsc",
     "start": "docker-compose --profile app up -d --build && sleep 1 && pnpm db:push"
   },
