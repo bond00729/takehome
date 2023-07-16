@@ -68,3 +68,11 @@ pnpm start
 _Note: if you don't want to install `pnpm`, you can use `npm` but will need to update the `start` command in `package.json` to use `npm` instead of `pnpm`_
 
 Once running, the API documentation can be found at `http://localhost:8080/api/v1/docs`
+
+## Assumptions
+
+- The api does not require any authentication or authorization.
+
+## Approaches
+
+- Used cursor based pagination for `/api/v1/stats` instead of pages since it, in theory, could be over a large recordset.
