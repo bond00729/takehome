@@ -8,7 +8,8 @@ import { redirect } from './redirect';
 
 const v1 = express.Router();
 
-v1.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+v1.use('/docs', swaggerUi.serve);
+v1.get('/docs', swaggerUi.setup(swaggerSpec));
 v1.use('/shorten', shorten);
 v1.use('/stats', stats);
 
