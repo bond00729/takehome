@@ -35,7 +35,7 @@ export async function redirect(req: Request, res: Response) {
     where: { slug },
   });
 
-  res.redirect(link.original);
+  res.redirect(302, link.original);
 
   await prisma.link.update({
     where: { slug },
