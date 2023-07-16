@@ -18,9 +18,11 @@ RUN pnpm i --offline && pnpm db:generate && pnpm build && pnpm prune --prod
 FROM node:18 as app
 WORKDIR /app
 
+COPY --from=build /app/tsconfig.json ./tsconfig.json
 COPY --from=build /app/prisma ./prisma
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist ./
+COPY --from=build /app/dist ./dist
 
+ENV TS_NODE_BASEURL="./dist"
 EXPOSE 8080
-CMD [ "node", "./index.js" ]
+CMD ["node", "-r", "tsconfig-paths/register", "./dist/index.js"]
