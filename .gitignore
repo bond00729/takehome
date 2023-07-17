@@ -1,6 +1,6 @@
 # Artillery
-artillert/*.json
-artillert/*.html
+artillery/*.json
+artillery/*.html
 
 # Logs
 logs
