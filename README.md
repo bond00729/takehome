@@ -55,7 +55,7 @@ There are currently two load test scenarios being run:
 - create and update
 - go to shortened link
 
-An html report of the load test is stored in `/artillery/reports`
+An html report of the load test is saved to `/artillery`
 
 ## Running the API via docker-compose
 
