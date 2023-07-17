@@ -55,7 +55,7 @@ There are currently two load test scenarios being run:
 
 A html report of the load test is saved to `/artillery`
 
-## Running the API via docker-compose
+## Running the API via `docker-compose`
 
 To build/start the api server and associated database run:
 
