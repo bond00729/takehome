@@ -10,11 +10,11 @@
     "lint": "eslint --max-warnings 0 ./src/**/*.ts",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
-    "dev": "docker-compose --profile dev up -d && sleep 1 && $npm_execpath db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
-    "test": "docker-compose --profile dev up -d && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public $npm_execpath db:push && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public PORT=9090 SERVER_URL=http://localhost:9090 LOG_LEVEL=silent mocha --timeout 60000 --exit -r ts-node/register -r tsconfig-paths/register './src/**/*.spec.ts'",
-    "test:load": "pnpm start && pnpm dlx artillery run ./artillery/v1.yaml --output ./artillery/reports/v1.json && pnpm dlx artillery report ./artillery/reports/v1.json",
+    "dev": "docker-compose --profile dev up -d && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/postgres?schema=public pnpm db:push && SERVER_URL=http://localhost:8080 nodemon -r tsconfig-paths/register ./src/index.ts",
+    "test": "docker-compose --profile dev up -d && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public pnpm db:push && DATABASE_URL=postgresql://application:password@localhost:5432/test?schema=public PORT=9090 SERVER_URL=http://localhost:9090 LOG_LEVEL=silent mocha --timeout 60000 --exit -r ts-node/register -r tsconfig-paths/register './src/**/*.spec.ts'",
+    "test:load": "pnpm start && pnpm dlx artillery run ./artillery/v1.yaml --output ./artillery/v1.json && pnpm dlx artillery report ./artillery/v1.json",
     "build": "tsc",
-    "start": "docker-compose --profile app up -d --build && sleep 1 && $npm_execpath db:push"
+    "start": "docker-compose --profile app up -d --build && sleep 1 && DATABASE_URL=postgresql://application:password@localhost:5432/postgres?schema=public pnpm db:push"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "2.2.1",
