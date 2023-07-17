@@ -70,6 +70,7 @@ Once running, the API documentation can be found at `http://localhost:8080/api/v
 ## Assumptions
 
 - The api does not require any authentication or authorization.
+- Redirect count is not unique per viewer, just a total number of times the shortened url has been hit.
 
 ## Approaches
 
