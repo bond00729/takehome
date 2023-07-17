@@ -16,7 +16,7 @@ This repo contains the completed code for the takehome assessment.
 pnpm i
 ```
 
-2. start the dev server on port `8080`
+2. start the dev server (on port `8080`) in watch mode so changes to the source code are automatically applied to the running dev server.
 
 ```
 pnpm dev
@@ -28,13 +28,11 @@ or on a specific port
 PORT=8081 pnpm dev
 ```
 
-this will start the dev server in watch mode so changes to the source code are automatically applied to the running dev server.
-
 3. write some code!
 
 ## Tests
 
-_Note: must complete step one of dev setup before running the tests_
+_Note: must complete step one of "Dev Setup" before running the tests_
 
 **Integration tests:**
 Integration tests for each api route are alongside the implementation (`*.spec.ts`)
@@ -55,7 +53,7 @@ There are currently two load test scenarios being run:
 - create and update
 - go to shortened link
 
-An html report of the load test is saved to `/artillery`
+A html report of the load test is saved to `/artillery`
 
 ## Running the API via docker-compose
 
