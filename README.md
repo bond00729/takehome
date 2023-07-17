@@ -44,7 +44,7 @@ pnpm test
 ```
 
 **Load tests:**
-Load test are run via `artillery` and requires `pnpm` to be installed on the host machine
+Load tests are run via `artillery` and requires `pnpm` to be installed on the host machine
 
 ```
 pnpm test:load
@@ -55,7 +55,7 @@ There are currently two load test scenarios being run:
 - create and update
 - go to shortened link
 
-An html report of a load test is stored in `/artillery/reports`
+An html report of the load test is stored in `/artillery/reports`
 
 ## Running the API via docker-compose
 
