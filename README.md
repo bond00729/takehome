@@ -6,6 +6,7 @@ This repo contains the completed code for the takehome assessment.
 
 - [Node 18](https://nodejs.org/en/download)
 - [PNPM](https://pnpm.io/installation)
+  - _Note: you may use `npm` or `yarn` instead of `pnpm` to run the commands (except for `test:load`)._
 - [Docker](https://docs.docker.com/engine/install/)
 
 ## Dev Setup
