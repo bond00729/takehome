@@ -10,7 +10,7 @@ RUN pnpm fetch
 
 ADD . ./
 
-RUN pnpm i --offline && pnpm db:generate && pnpm build && pnpm prune --prod
+RUN pnpm i && pnpm db:generate && pnpm build && pnpm prune --prod
 
 #######
 # App #
